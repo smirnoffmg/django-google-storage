@@ -8,7 +8,8 @@ abilities to use Google Storage. It's easy and fast.
 Install
 =========
 
-Steps
+_Steps_
+
 
 * pip install django-google-storage
 
@@ -23,3 +24,7 @@ to your settings.py
 * ....
 
 * PROFIT
+
+# TODO
+    - custom exceptions
+    - testing
