@@ -1,0 +1,2 @@
+#Django needed. Do you know it?)
+boto
