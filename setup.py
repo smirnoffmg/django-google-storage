@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='django-google-storage',
-    version='0.2.1dev',
+    version='0.2.2dev',
     packages=['django-google-storage', ],
     author='Maxim Smirnoff',
     author_email='max@whitescape.com',
