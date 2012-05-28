@@ -1,5 +1,6 @@
 from django.utils.encoding import force_unicode
 
+
 def safe_join(base, *paths):
     """
     A version of django.utils._os.safe_join for S3 paths.
