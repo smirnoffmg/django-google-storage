@@ -90,10 +90,8 @@ class GoogleStorage(Storage):
         return self._entries
 
     def _get_access_keys(self):
-        print u'trying to get them.'
         access_key = ACCESS_KEY_NAME
         secret_key = SECRET_KEY_NAME
-        print u' here they are: %s, %s' % (access_key, secret_key)
         if (access_key or secret_key) and (not access_key or not secret_key):
             access_key = os.environ.get(ACCESS_KEY_NAME)
             secret_key = os.environ.get(SECRET_KEY_NAME)
