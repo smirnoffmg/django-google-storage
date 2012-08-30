@@ -75,6 +75,8 @@ class GoogleStorage(Storage):
             access_key, secret_key = self._get_access_keys()
 
         self.connection = GSConnection(access_key, secret_key)
+        
+        self._entries = {}
 
     @property
     def bucket(self):
