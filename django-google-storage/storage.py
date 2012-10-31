@@ -18,9 +18,10 @@ except ImportError:
     raise ImproperlyConfigured("Could not load Google Storage bindings.\n"
                                "See http://code.google.com/p/boto/")
 
-
-ACCESS_KEY_NAME     = getattr(settings, 'GS_ACCESS_KEY_ID', None)
-SECRET_KEY_NAME     = getattr(settings, 'GS_SECRET_ACCESS_KEY', None)
+ACCESS_KEY_NAME     = getattr(settings, 'GS_ACCESS_KEY_NAME', 'GS_ACCESS_KEY_ID')
+SECRET_KEY_NAME     = getattr(settings, 'GS_SECRET_KEY_NAME', 'GS_SECRET_ACCESS_KEY')
+ACCESS_KEY_ID       = getattr(settings, ACCESS_KEY_NAME, None)
+SECRET_ACCESS_KEY   = getattr(settings, SECRET_KEY_NAME, None)
 HEADERS             = getattr(settings, 'GS_HEADERS', {})
 STORAGE_BUCKET_NAME = getattr(settings, 'GS_STORAGE_BUCKET_NAME', None)
 AUTO_CREATE_BUCKET  = getattr(settings, 'GS_AUTO_CREATE_BUCKET', False)
@@ -71,7 +72,6 @@ class GoogleStorage(Storage):
         self.file_name_charset = file_name_charset
 
         if not access_key and not secret_key:
-            print u'where are no secret keys.'
             access_key, secret_key = self._get_access_keys()
 
         self.connection = GSConnection(access_key, secret_key)
@@ -92,8 +92,8 @@ class GoogleStorage(Storage):
         return self._entries
 
     def _get_access_keys(self):
-        access_key = ACCESS_KEY_NAME
-        secret_key = SECRET_KEY_NAME
+        access_key = ACCESS_KEY_ID
+        secret_key = SECRET_ACCESS_KEY
         if (access_key or secret_key) and (not access_key or not secret_key):
             access_key = os.environ.get(ACCESS_KEY_NAME)
             secret_key = os.environ.get(SECRET_KEY_NAME)
