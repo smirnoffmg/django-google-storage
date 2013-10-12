@@ -26,3 +26,7 @@ TODO
 * testing
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/budurli/django-google-storage/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/budurli/django-google-storage/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
