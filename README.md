@@ -1,7 +1,6 @@
 =====================
 django-google-storage
 =====================
-
 It' just a compilation of django-storages and boto to improve you
 abilities to use Google Storage. It's easy and fast.
 
@@ -24,8 +23,6 @@ TODO
 ====
 * custom exceptions
 * testing
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/budurli/django-google-storage/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/budurli/django-google-storage/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
