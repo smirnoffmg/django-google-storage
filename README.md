@@ -24,3 +24,5 @@ TODO
 ====
 * custom exceptions
 * testing
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/budurli/django-google-storage/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
