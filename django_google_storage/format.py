@@ -1,14 +1,15 @@
+# coding=utf-8
 import urllib
 
-import boto
-
+import boto.utils
 from boto.exception import BotoClientError
 
 
 def check_lowercase_bucketname(n):
     if not (n + 'a').islower():
-        raise BotoClientError("Bucket names cannot contain upper-case " \
-            "characters when using either the sub-domain or virtual " \
+        raise BotoClientError(
+            "Bucket names cannot contain upper-case "
+            "characters when using either the sub-domain or virtual "
             "hosting calling format.")
     return True
 
@@ -18,11 +19,11 @@ def assert_case_insensitive(f):
         if len(args) == 3 and check_lowercase_bucketname(args[2]):
             pass
         return f(*args, **kwargs)
+
     return wrapper
 
 
 class _CallingFormat(object):
-
     def get_bucket_server(self, server, bucket):
         return ''
 
@@ -51,7 +52,6 @@ class _CallingFormat(object):
 
 
 class SubdomainCallingFormat(_CallingFormat):
-
     @assert_case_insensitive
     def get_bucket_server(self, server, bucket):
         return '%s.%s' % (bucket, server)

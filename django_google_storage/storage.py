@@ -1,5 +1,5 @@
+# coding=utf-8
 import os
-
 import mimetypes
 
 from django.conf import settings
@@ -18,27 +18,27 @@ except ImportError:
     raise ImproperlyConfigured("Could not load Google Storage bindings.\n"
                                "See http://code.google.com/p/boto/")
 
-ACCESS_KEY_NAME     = getattr(settings, 'GS_ACCESS_KEY_NAME', 'GS_ACCESS_KEY_ID')
-SECRET_KEY_NAME     = getattr(settings, 'GS_SECRET_KEY_NAME', 'GS_SECRET_ACCESS_KEY')
-ACCESS_KEY_ID       = getattr(settings, ACCESS_KEY_NAME, None)
-SECRET_ACCESS_KEY   = getattr(settings, SECRET_KEY_NAME, None)
-HEADERS             = getattr(settings, 'GS_HEADERS', {})
+ACCESS_KEY_NAME = getattr(settings, 'GS_ACCESS_KEY_NAME', 'GS_ACCESS_KEY_ID')
+SECRET_KEY_NAME = getattr(settings, 'GS_SECRET_KEY_NAME', 'GS_SECRET_ACCESS_KEY')
+ACCESS_KEY_ID = getattr(settings, ACCESS_KEY_NAME, None)
+SECRET_ACCESS_KEY = getattr(settings, SECRET_KEY_NAME, None)
+HEADERS = getattr(settings, 'GS_HEADERS', {})
 STORAGE_BUCKET_NAME = getattr(settings, 'GS_STORAGE_BUCKET_NAME', None)
-AUTO_CREATE_BUCKET  = getattr(settings, 'GS_AUTO_CREATE_BUCKET', False)
-DEFAULT_ACL         = getattr(settings, 'GS_DEFAULT_ACL', 'public-read')
-BUCKET_ACL          = getattr(settings, 'GS_BUCKET_ACL', DEFAULT_ACL)
-QUERYSTRING_AUTH    = getattr(settings, 'GS_QUERYSTRING_AUTH', True)
-QUERYSTRING_EXPIRE  = getattr(settings, 'GS_QUERYSTRING_EXPIRE', 3600)
-REDUCED_REDUNDANCY  = getattr(settings, 'GS_REDUCED_REDUNDANCY', False)
-LOCATION            = getattr(settings, 'GS_LOCATION', '')
-CUSTOM_DOMAIN       = getattr(settings, 'GS_CUSTOM_DOMAIN', None)
-CALLING_FORMAT      = getattr(settings, 'GS_CALLING_FORMAT', SubdomainCallingFormat())
-SECURE_URLS         = getattr(settings, 'GS_SECURE_URLS', True)
-FILE_NAME_CHARSET   = getattr(settings, 'GS_FILE_NAME_CHARSET', 'utf-8')
-FILE_OVERWRITE      = getattr(settings, 'GS_FILE_OVERWRITE', True)
-IS_GZIPPED          = getattr(settings, 'GS_IS_GZIPPED', False)
-PRELOAD_METADATA    = getattr(settings, 'GS_PRELOAD_METADATA', False)
-GZIP_CONTENT_TYPES  = getattr(settings, 'GZIP_CONTENT_TYPES', (
+AUTO_CREATE_BUCKET = getattr(settings, 'GS_AUTO_CREATE_BUCKET', False)
+DEFAULT_ACL = getattr(settings, 'GS_DEFAULT_ACL', 'public-read')
+BUCKET_ACL = getattr(settings, 'GS_BUCKET_ACL', DEFAULT_ACL)
+QUERYSTRING_AUTH = getattr(settings, 'GS_QUERYSTRING_AUTH', True)
+QUERYSTRING_EXPIRE = getattr(settings, 'GS_QUERYSTRING_EXPIRE', 3600)
+REDUCED_REDUNDANCY = getattr(settings, 'GS_REDUCED_REDUNDANCY', False)
+LOCATION = getattr(settings, 'GS_LOCATION', '')
+CUSTOM_DOMAIN = getattr(settings, 'GS_CUSTOM_DOMAIN', None)
+CALLING_FORMAT = getattr(settings, 'GS_CALLING_FORMAT', SubdomainCallingFormat())
+SECURE_URLS = getattr(settings, 'GS_SECURE_URLS', True)
+FILE_NAME_CHARSET = getattr(settings, 'GS_FILE_NAME_CHARSET', 'utf-8')
+FILE_OVERWRITE = getattr(settings, 'GS_FILE_OVERWRITE', True)
+IS_GZIPPED = getattr(settings, 'GS_IS_GZIPPED', False)
+PRELOAD_METADATA = getattr(settings, 'GS_PRELOAD_METADATA', False)
+GZIP_CONTENT_TYPES = getattr(settings, 'GZIP_CONTENT_TYPES', (
     'text/css',
     'application/javascript',
     'application/x-javascript'
@@ -47,13 +47,13 @@ GZIP_CONTENT_TYPES  = getattr(settings, 'GZIP_CONTENT_TYPES', (
 
 class GoogleStorage(Storage):
     def __init__(self, bucket=STORAGE_BUCKET_NAME, access_key=None,
-                       secret_key=None, bucket_acl=BUCKET_ACL, acl=DEFAULT_ACL, headers=HEADERS,
-                       gzip=IS_GZIPPED, gzip_content_types=GZIP_CONTENT_TYPES,
-                       querystring_auth=QUERYSTRING_AUTH, querystring_expire=QUERYSTRING_EXPIRE,
-                       reduced_redundancy=REDUCED_REDUNDANCY,
-                       custom_domain=CUSTOM_DOMAIN, secure_urls=SECURE_URLS,
-                       location=LOCATION, file_name_charset=FILE_NAME_CHARSET,
-                       preload_metadata=PRELOAD_METADATA, calling_format=CALLING_FORMAT):
+                 secret_key=None, bucket_acl=BUCKET_ACL, acl=DEFAULT_ACL, headers=HEADERS,
+                 gzip=IS_GZIPPED, gzip_content_types=GZIP_CONTENT_TYPES,
+                 querystring_auth=QUERYSTRING_AUTH, querystring_expire=QUERYSTRING_EXPIRE,
+                 reduced_redundancy=REDUCED_REDUNDANCY,
+                 custom_domain=CUSTOM_DOMAIN, secure_urls=SECURE_URLS,
+                 location=LOCATION, file_name_charset=FILE_NAME_CHARSET,
+                 preload_metadata=PRELOAD_METADATA, calling_format=CALLING_FORMAT):
 
         self.bucket_acl = bucket_acl
         self.bucket_name = bucket
@@ -75,7 +75,7 @@ class GoogleStorage(Storage):
             access_key, secret_key = self._get_access_keys()
 
         self.connection = GSConnection(access_key, secret_key)
-        
+
         self._entries = {}
 
     @property
@@ -88,7 +88,7 @@ class GoogleStorage(Storage):
     def entries(self):
         if self.preload_metadata and not self._entries:
             self._entries = dict((self._decode_name(entry.key), entry)
-                                for entry in self.bucket.list())
+                                 for entry in self.bucket.list())
         return self._entries
 
     def _get_access_keys(self):
@@ -151,7 +151,7 @@ class GoogleStorage(Storage):
 
         k.set_metadata('Content-Type', content_type)
         k.set_contents_from_file(content, headers=headers, policy=self.acl)
-                                 #reduced_redundancy=self.reduced_redundancy)
+        # reduced_redundancy=self.reduced_redundancy)
         return cleaned_name
 
     def delete(self, name):
@@ -216,8 +216,9 @@ class GoogleStorage(Storage):
             return "%s://%s/%s" % ('https' if self.secure_urls else 'http', self.custom_domain, name)
         else:
             return self.connection.generate_url(self.querystring_expire, method='GET', \
-                    bucket=self.bucket.name, key=self._encode_name(name), query_auth=self.querystring_auth, \
-                    force_http=not self.secure_urls)
+                                                bucket=self.bucket.name, key=self._encode_name(name),
+                                                query_auth=self.querystring_auth, \
+                                                force_http=not self.secure_urls)
 
     def get_available_name(self, name):
         """ Overwrite existing file with the same name. """

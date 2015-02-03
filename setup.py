@@ -4,7 +4,7 @@ from distutils.core import setup
 setup(
     name='django-google-storage',
     version='0.4.0',
-    packages=['django-google-storage', ],
+    packages=['django_google_storage', ],
     author='Maxim Smirnoff',
     author_email='smirnoffmg@gmail.com',
     url='http://pypi.python.org/pypi/django-google-storage/',

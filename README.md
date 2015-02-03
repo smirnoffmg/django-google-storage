@@ -9,7 +9,7 @@ Install
 
 1. pip install django-google-storage
 
-2. put 'django-google-storage.storage.GoogleStorage' in DEFAULT_FILE_STORAGE. 
+2. put 'django_google_storage.storage.GoogleStorage' in DEFAULT_FILE_STORAGE. 
 It's in settings.py too.
 
 3. add GS_ACCESS_KEY_ID, GS_SECRET_ACCESS_KEY and GS_STORAGE_BUCKET_NAME 
