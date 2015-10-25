@@ -7,7 +7,7 @@ setup(
     packages=['django_google_storage', ],
     author='Maxim Smirnoff',
     author_email='smirnoffmg@gmail.com',
-    url='http://pypi.python.org/pypi/django-google-storage/',
+    url='https://github.com/budurli/django-google-storage',
     license='LICENSE.txt',
     description='Django storage for Google Storage',
     install_requires=[
