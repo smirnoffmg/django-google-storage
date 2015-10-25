@@ -7,7 +7,7 @@ abilities to use Google Storage. It's easy and fast.
 Install
 =======
 
-1. pip install django-google-storage
+1. pip install django-google-storage-updated
 
 2. put 'django_google_storage.storage.GoogleStorage' in DEFAULT_FILE_STORAGE. 
 It's in settings.py too.
@@ -23,7 +23,3 @@ TODO
 ====
 * custom exceptions
 * testing
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/budurli/django-google-storage/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
