@@ -23,3 +23,11 @@ TODO
 ====
 * custom exceptions
 * testing
+
+### note
+
+tested with 
+
+Django==1.10.3
+
+boto==2.43.0
