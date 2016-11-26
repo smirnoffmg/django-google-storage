@@ -220,7 +220,7 @@ class GoogleStorage(Storage):
                                                 query_auth=self.querystring_auth, \
                                                 force_http=not self.secure_urls)
 
-    def get_available_name(self, name):
+    def get_available_name(self, name, *args, **kwargs):
         """ Overwrite existing file with the same name. """
         if FILE_OVERWRITE:
             name = self._clean_name(name)

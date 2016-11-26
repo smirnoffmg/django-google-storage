@@ -1,3 +1,5 @@
+tested with django 1.10.3
+
 =====================
 django-google-storage
 =====================
