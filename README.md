@@ -1,4 +1,4 @@
-tested with django 1.10.3
+tested with django 1.10.4
 
 =====================
 django-google-storage
