@@ -150,7 +150,7 @@ class GoogleStorage(Storage):
             k = self.bucket.new_key(self._encode_name(name))
 
         k.set_metadata('Content-Type', content_type)
-        k.set_contents_from_file(content, headers=headers, policy=self.acl)
+        k.set_contents_from_file(content, headers=headers, policy=self.acl, rewind=True)
         # reduced_redundancy=self.reduced_redundancy)
         return cleaned_name
 
