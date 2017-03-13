@@ -113,7 +113,7 @@ class GoogleStorage(Storage):
                 bucket = self.connection.create_bucket(name)
                 bucket.set_acl(self.bucket_acl)
                 return bucket
-            raise ImproperlyConfigured("%s" % str(e))
+            raise ImproperlyConfigured("{0!s}".format(str(e)))
 
     def _clean_name(self, name):
         # Useful for windows' paths
@@ -123,7 +123,7 @@ class GoogleStorage(Storage):
         try:
             return safe_join(self.location, name).lstrip('/')
         except ValueError:
-            raise SuspiciousOperation("Attempted access to '%s' denied." % name)
+            raise SuspiciousOperation("Attempted access to '{0!s}' denied.".format(name))
 
     def _encode_name(self, name):
         return smart_str(name, encoding=self.file_name_charset)
@@ -135,7 +135,7 @@ class GoogleStorage(Storage):
         name = self._normalize_name(self._clean_name(name))
         f = GSBotoStorageFile(name, mode, self)
         if not f.key:
-            raise IOError('File does not exist: %s' % name)
+            raise IOError('File does not exist: {0!s}'.format(name))
         return f
 
     def _save(self, name, content):
@@ -213,7 +213,7 @@ class GoogleStorage(Storage):
     def url(self, name):
         name = self._normalize_name(self._clean_name(name))
         if self.custom_domain:
-            return "%s://%s/%s" % ('https' if self.secure_urls else 'http', self.custom_domain, name)
+            return "{0!s}://{1!s}/{2!s}".format('https' if self.secure_urls else 'http', self.custom_domain, name)
         else:
             return self.connection.generate_url(self.querystring_expire, method='GET', \
                                                 bucket=self.bucket.name, key=self._encode_name(name),

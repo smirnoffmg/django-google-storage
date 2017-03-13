@@ -28,7 +28,7 @@ class _CallingFormat(object):
         return ''
 
     def build_url_base(self, connection, protocol, server, bucket, key=''):
-        url_base = '%s://' % protocol
+        url_base = '{0!s}://'.format(protocol)
         url_base += self.build_host(server, bucket)
         url_base += connection.get_path(self.build_path_base(bucket, key))
         return url_base
@@ -44,14 +44,14 @@ class _CallingFormat(object):
         path = ''
         if bucket != '':
             path = '/' + bucket
-        return path + '/%s' % urllib.quote(key)
+        return path + '/{0!s}'.format(urllib.quote(key))
 
     def build_path_base(self, bucket, key=''):
         key = boto.utils.get_utf8_value(key)
-        return '/%s' % urllib.quote(key)
+        return '/{0!s}'.format(urllib.quote(key))
 
 
 class SubdomainCallingFormat(_CallingFormat):
     @assert_case_insensitive
     def get_bucket_server(self, server, bucket):
-        return '%s.%s' % (bucket, server)
+        return '{0!s}.{1!s}'.format(bucket, server)
