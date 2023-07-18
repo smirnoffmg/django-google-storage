@@ -150,7 +150,7 @@ class GoogleStorage(Storage):
             k = self.bucket.new_key(self._encode_name(name))
 
         k.set_metadata('Content-Type', content_type)
-        k.set_contents_from_file(content, headers=headers, policy=self.acl)
+        k.set_contents_from_file(content, headers=headers, policy=self.acl, rewind=True)
         # reduced_redundancy=self.reduced_redundancy)
         return cleaned_name
 
@@ -220,7 +220,7 @@ class GoogleStorage(Storage):
                                                 query_auth=self.querystring_auth, \
                                                 force_http=not self.secure_urls)
 
-    def get_available_name(self, name):
+    def get_available_name(self, name, *args, **kwargs):
         """ Overwrite existing file with the same name. """
         if FILE_OVERWRITE:
             name = self._clean_name(name)
